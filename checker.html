@@ -9,6 +9,12 @@
 <meta property="og:title" content="Will it work on my carrier?">
 <meta property="og:description" content="Check an unlocked phone against AT&T, T-Mobile, Verizon and Boost before you buy.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://buyunlocked.net/checker.html">
+<meta property="og:image" content="https://buyunlocked.net/share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://buyunlocked.net/checker.html">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preload" href="BebasNeue.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -61,9 +67,18 @@ button.go{width:100%;min-height:52px;margin-top:20px;border:0;border-radius:9px;
 .btn{display:block;text-align:center;text-decoration:none;font-weight:600;padding:13px 14px;border-radius:9px;margin-top:10px}
 .btn.solid{background:var(--ink);color:var(--white)}
 .btn.line{border:1.5px solid var(--ink);color:var(--ink)}
+.offer{background:var(--ink);color:var(--white);border-radius:14px;padding:20px 22px;margin-top:12px}
+.offer h3{font:400 28px/1 "Bebas Neue",Impact,sans-serif;letter-spacing:.02em;margin:0 0 6px}
+.offer p{margin:0 0 12px;color:var(--silver);font-size:15px}
+.offer .optin{display:flex;gap:8px}
+.optin-email{flex:1;min-width:0;min-height:48px;padding:0 12px;border:0;border-radius:9px;font:inherit;color:var(--ink)}
+.optin-go{min-height:48px;padding:0 16px;border:0;border-radius:9px;background:var(--orange);color:var(--ink);font:inherit;font-weight:700;cursor:pointer}
+.offer .fine{margin:10px 0 0;font-size:13px}
+.offer .optin-ok{margin:10px 0 0;color:var(--white);font-weight:600}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 footer{padding:0 0 36px;color:var(--muted);font-size:13.5px}
 footer p{margin:0 0 10px}
-@media (max-width:440px){.others{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:440px){.others{grid-template-columns:repeat(2,1fr)}.offer .optin{flex-direction:column}}
 </style>
 </head>
 <body>
@@ -119,6 +134,8 @@ var CARRIERS=[
  {id:'verizon',name:'Verizon',core:[[2],[4,66],[5],[13]],nr:[5,77],url:'https://www.verizon.com/nextgendigital/sales/configurator/byod'},
  {id:'boost',name:'Boost Mobile',core:[[2],[4,66],[5],[12,17]],nr:[5,77],url:'https://www.boostmobile.com/check-compatibility',note:'Boost customers now run on AT&T\'s network. Android phones not bought from Boost need the Boost Config App during setup.'}
 ];
+var OFFER='<div class="offer"><h3>Shopping for an unlocked phone?</h3><p>Join the launch list and we\'ll email you when Buy Unlocked opens.</p><form method="POST" class="optin" action="https://zgnp-zngp.maillist-manage.com/weboptin.zc" target="_zcSignup" onsubmit="zcSubmit(this)"><input type="hidden" name="submitType" value="optinCustomView"><input type="hidden" name="emailReportId" value=""><input type="hidden" name="formType" value="QuickForm"><input type="hidden" name="zx" value="137c2bfc6"><input type="hidden" name="zcvers" value="3.0"><input type="hidden" name="oldListIds" value=""><input type="hidden" name="mode" value="OptinCreateView"><input type="hidden" name="zcld" value="11798f954591de236"><input type="hidden" name="zctd" value="11798f954591daf71"><input type="hidden" name="zc_trackCode" value="ZCFORMVIEW"><input type="hidden" name="zc_formIx" value="3z0cd4b6163fdbf38a358399a0ac9e3421b7c45760f7cd3c182fb80a130d59a2cc"><input type="hidden" name="scriptless" value="yes"><input type="hidden" name="zc_spmSubmit" value="ZCSPMSUBMIT"><label class="sr" for="offer-email">Email address</label><input id="offer-email" class="optin-email" type="email" name="CONTACT_EMAIL" placeholder="Your email" autocomplete="email" required><input class="optin-go" type="submit" name="SIGNUP_SUBMIT_BUTTON" value="Notify me"></form><p class="fine">Launch news only. Unsubscribe anytime. You must be 13 or older to sign up.</p><p class="optin-ok" hidden>Almost done. Check your email to confirm.</p></div>';
+function zcSubmit(f){var s=f.querySelector('[name=zc_spmSubmit]');if(s)s.remove();var o=f.parentNode.querySelector('.optin-ok');if(o)o.hidden=false;if(window.gtag)gtag('event','generate_lead',{form:'checker_offer'})}
 var LABEL={yes:'Should work',limited:'Works with limits',check:'Check before you buy',no:'Not recommended'};
 var SHORT={yes:'Should work',limited:'Limited',check:'Check first',no:'Not advised'};
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
@@ -157,14 +174,12 @@ function render(){
   var r=evaluate(p,c);
   var others=CARRIERS.map(function(o){var s=evaluate(p,o).status;
     return '<button type="button" class="other" data-c="'+o.id+'"'+(o.id===c.id?' aria-current="true"':'')+'>'+esc(o.name)+'<span class="s-'+s+'">'+SHORT[s]+'</span></button>'}).join('');
-  var subject=encodeURIComponent('Buy Unlocked launch updates: '+p.name+' on '+c.name);
   document.getElementById('result').innerHTML=
    '<div class="verdict '+r.status+'" data-status="'+r.status+'"><h2>'+LABEL[r.status]+'</h2><p class="for">'+esc(p.name)+' on '+esc(c.name)+'</p></div>'+
    '<div class="body"><h3>Why</h3><ul>'+why(p,c,r).map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>'+
    '<h3>Other carriers for this phone</h3><div class="others">'+others+'</div>'+
    '<h3>Before you buy</h3><ul><li>Make sure the phone is actually unlocked. Compatible and unlocked are two separate things.</li><li>Run the IMEI through the carrier\'s own check. Dial *#06# to find it.</li></ul>'+
-   '<a class="btn solid" href="'+c.url+'" target="_blank" rel="noopener">Check IMEI with '+esc(c.name)+'</a>'+
-   '<a class="btn line" href="mailto:hello@cpophones.net?subject='+subject+'">Email me when Buy Unlocked launches</a></div>';
+   '<a class="btn solid" href="'+c.url+'" target="_blank" rel="noopener">Check IMEI with '+esc(c.name)+'</a></div>'+OFFER;
   try{var q=new URLSearchParams({phone:p.id,carrier:c.id});history.replaceState(null,'','?'+q.toString())}catch(e){}
 }
 var phone=document.getElementById('phone'),carrier=document.getElementById('carrier');
