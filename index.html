@@ -6,10 +6,10 @@
 <title>Buy Unlocked | Unlocked phones. Any carrier.</title>
 <meta name="description" content="Unlocked phones from Samsung, Google, Motorola, OnePlus, TCL and Apple. New, open-box and certified pre-owned, ready for any carrier. Launching soon.">
 <meta property="og:title" content="Buy Unlocked | Unlocked phones. Any carrier.">
-<meta property="og:description" content="Freedom is the feature. Unlocked phones, bundles and partnerships. Launching soon.">
+<meta property="og:description" content="Freedom is the feature. Unlocked phones and Unlocked bundles, launching soon.">
 <meta property="og:url" content="https://buyunlocked.net/">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://buyunlocked.net/buyunlocked%20banner.png">
+<meta property="og:image" content="https://buyunlocked.net/og-banner.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -87,6 +87,8 @@
   .bundle.feature h3 em{color:var(--ink)}
   .bundle p{margin-top:14px;opacity:.88;font-size:16px}
   .bundle .includes{margin-top:auto;padding-top:22px;font-weight:600;font-size:14.5px;opacity:.95}
+  .bgrid{grid-template-columns:repeat(2,1fr)}
+  @media (max-width:960px){.bgrid{grid-template-columns:1fr}}
   .more{margin-top:22px;color:var(--muted);font-size:16px}
 
   /* Partners */
@@ -134,13 +136,24 @@
     .optin{flex-direction:column}
     .nav .btn{width:auto}
   }
+  /* Phone menu */
+  .menu-btn{display:none;margin-left:auto;margin-right:10px;min-height:40px;padding:0 16px;border:1.5px solid #ddd;border-radius:999px;background:var(--white);color:var(--ink);font:inherit;font-weight:700;font-size:14px;cursor:pointer}
+  @media (max-width:640px){
+    .menu-btn{display:inline-flex;align-items:center}
+    header.open .nav ul{display:flex;flex-direction:column;gap:0;position:absolute;top:68px;left:0;right:0;background:var(--white);border-bottom:1px solid #eee;padding:8px 16px 14px;box-shadow:0 12px 24px rgba(16,18,21,.08)}
+    header.open .nav ul a{display:block;padding:12px 0;font-size:17px;color:var(--ink)}
+  }
+  .step .num{font-family:"Bebas Neue",sans-serif;font-size:44px;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .prose h2{font-size:24px;margin:36px 0 10px}
+  .prose a{color:var(--pink)}
+  .legal a{color:inherit}
 </style>
 </head>
 <body>
 
 <header>
   <div class="wrap nav">
-    <a class="logo" href="#top" aria-label="Buy Unlocked home">
+    <a class="logo" href="/" aria-label="Buy Unlocked home">
       <svg width="150" height="46" viewBox="0 0 150 46" aria-hidden="true">
         <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF8C3C"/><stop offset="1" stop-color="#FF4070"/></linearGradient></defs>
         <path d="M22 4h120a6 6 0 0 1 6 6v26a6 6 0 0 1-6 6H22L4 23Z" fill="url(#g1)"/>
@@ -149,13 +162,8 @@
         <text x="86" y="37" text-anchor="middle" font-family="Bebas Neue, Impact, sans-serif" font-size="17" textLength="62" lengthAdjust="spacingAndGlyphs" fill="#fff">UNLOCKED</text>
       </svg>
     </a>
-    <ul>
-      <li><a href="checker.html">Will it work?</a></li>
-      <li><a href="#why">Why unlocked</a></li>
-      <li><a href="#bundles">Bundles</a></li>
-      <li><a href="#partners">Partners</a></li>
-      <li><a href="about.html">About</a></li>
-    </ul>
+    <ul id="site-nav"><li><a href="/checker.html">Will it work?</a></li><li><a href="/#bundles">Bundles</a></li><li><a href="/game-unlocked.html">Game Unlocked</a></li><li><a href="/travel-unlocked.html">Travel Unlocked</a></li><li><a href="/about.html">About</a></li></ul>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <a class="btn btn-ink btn-sm" href="#updates">Get updates</a>
   </div>
 </header>
@@ -200,7 +208,6 @@
         <div class="card"><div class="num">03</div><h3>Travel without a lock</h3><p>Pop in a local SIM or travel eSIM and skip the roaming charges.</p></div>
         <div class="card"><div class="num">04</div><h3>Own what you paid for</h3><p>No contract strings. Your phone keeps its value when you sell or trade it.</p></div>
       </div>
-      <div class="pillars"><span class="pill">Choice</span><span class="pill">Control</span><span class="pill">Confidence</span></div>
     </div>
   </section>
 
@@ -211,19 +218,13 @@
         <h2 class="display">A phone is just the start.</h2>
         <p>Each bundle gives you the gear and services to do something new with your phone.</p>
       </div>
-      <div class="grid3">
-        <article class="bundle feature">
-          <span class="badge">First up</span>
+      <div class="grid3 bgrid">
+        <a class="bundle feature" href="/game-unlocked.html" style="text-decoration:none">
+          <span class="badge">Launching first</span>
           <h3><em>Game</em> Unlocked</h3>
-          <p>Keep your phone cooler through long gaming sessions.</p>
-          <div class="includes">Phone cooler + 90&deg; cable + magnetic ring + finger sleeves + mystery charm</div>
-        </article>
-        <article class="bundle">
-          <span class="badge">Coming soon</span>
-          <h3><em>Unplug</em> Unlocked</h3>
-          <p>Take a break from the screen and still capture the moment.</p>
-          <div class="includes">Screen-free camera kit</div>
-        </article>
+          <p>Keep your phone cooler and your grip steady through long gaming sessions.</p>
+          <div class="includes">Phone cooler + magnetic ring + finger sleeves + 6 ft 90&deg; USB-C cable + Loot Drop NFC charm &rarr;</div>
+        </a>
         <article class="bundle">
           <span class="badge">Coming soon</span>
           <h3><em>Power</em> Unlocked</h3>
@@ -233,8 +234,8 @@
         <a class="bundle" href="travel-unlocked.html" style="text-decoration:none">
           <span class="badge">Coming soon</span>
           <h3><em>Travel</em> Unlocked</h3>
-          <p>Land, connect and get talking, with no roaming surprises.</p>
-          <div class="includes">Unlocked phone + travel eSIM + AI translation earbuds &rarr;</div>
+          <p>Land, connect and start talking, with no roaming surprises and no translation subscription.</p>
+          <div class="includes">Unlocked phone with live translation + travel eSIM + open-ear earbuds &rarr;</div>
         </a>
         <article class="bundle">
           <span class="badge">Coming soon</span>
@@ -286,6 +287,7 @@
         <input id="signup-email" class="optin-email" type="email" name="CONTACT_EMAIL" placeholder="Your email" autocomplete="email" required>
         <input class="optin-go" type="submit" name="SIGNUP_SUBMIT_BUTTON" value="Notify me">
       </form>
+      <iframe name="_zcSignup" title="Email signup" hidden></iframe>
       <p class="fine">Launch news only. Unsubscribe anytime. You must be 13 or older to sign up.</p>
       <p class="optin-ok" hidden>Almost done. Check your email to confirm.</p>
     </div>
@@ -304,7 +306,7 @@
         </svg>
         <div class="line">Freedom is the feature.</div>
         <p style="margin-top:10px">Questions or partnerships: <a href="mailto:hello@buyunlocked.net">hello@buyunlocked.net</a></p>
-        <p style="margin-top:8px"><a href="about.html">About us</a> &middot; <a href="travel-unlocked.html">Travel Unlocked</a> &middot; <a href="checker.html">Will it work?</a></p>
+        <p style="margin-top:8px"><a href="/about.html">About us</a> &middot; <a href="/game-unlocked.html">Game Unlocked</a> &middot; <a href="/travel-unlocked.html">Travel Unlocked</a> &middot; <a href="checker.html">Will it work?</a></p>
       </div>
       <div class="social" aria-label="Buy Unlocked on social media">
         <a href="https://www.instagram.com/buyunlocked" rel="noopener" target="_blank">Instagram</a>
@@ -318,7 +320,7 @@
       </div>
     </div>
     <div class="legal">
-      <span>&copy; 2026 LEK Telecom LLC. Buy Unlocked is a brand of LEK Telecom LLC.</span>
+      <span>&copy; 2026 LEK Telecom LLC. Buy Unlocked is a brand of LEK Telecom LLC. <a href="/privacy.html">Privacy</a></span>
       <span>Brand names belong to their respective owners.</span>
     </div>
   </div>
@@ -326,6 +328,11 @@
 
 <script>
 function zcSubmit(f){var s=f.querySelector('[name=zc_spmSubmit]');if(s)s.remove();var o=f.parentNode.querySelector('.optin-ok');if(o)o.hidden=false;if(window.gtag)gtag('event','generate_lead',{form:f.id||'launch_list'})}
+</script>
+<script>
+(function(){var h=document.querySelector('header'),b=h&&h.querySelector('.menu-btn');if(!b)return;
+b.addEventListener('click',function(){var o=h.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Close':'Menu'});
+h.querySelectorAll('.nav ul a').forEach(function(a){a.addEventListener('click',function(){h.classList.remove('open');b.setAttribute('aria-expanded','false');b.textContent='Menu'})});})();
 </script>
 </body>
 </html>

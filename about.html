@@ -9,7 +9,7 @@
 <meta property="og:description" content="Buy Unlocked is a brand of LEK Telecom LLC, a Colorado company selling unlocked phones and Unlocked bundles that work on any carrier, at home or abroad.">
 <meta property="og:url" content="https://buyunlocked.net/about.html">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://buyunlocked.net/buyunlocked%20banner.png">
+<meta property="og:image" content="https://buyunlocked.net/og-banner.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -157,6 +157,17 @@
   .prose p{margin-bottom:18px}
   .note{color:var(--muted);font-size:14px;margin-top:28px}
   @media (max-width:960px){.steps,.facts{grid-template-columns:1fr}}
+  /* Phone menu */
+  .menu-btn{display:none;margin-left:auto;margin-right:10px;min-height:40px;padding:0 16px;border:1.5px solid #ddd;border-radius:999px;background:var(--white);color:var(--ink);font:inherit;font-weight:700;font-size:14px;cursor:pointer}
+  @media (max-width:640px){
+    .menu-btn{display:inline-flex;align-items:center}
+    header.open .nav ul{display:flex;flex-direction:column;gap:0;position:absolute;top:68px;left:0;right:0;background:var(--white);border-bottom:1px solid #eee;padding:8px 16px 14px;box-shadow:0 12px 24px rgba(16,18,21,.08)}
+    header.open .nav ul a{display:block;padding:12px 0;font-size:17px;color:var(--ink)}
+  }
+  .step .num{font-family:"Bebas Neue",sans-serif;font-size:44px;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .prose h2{font-size:24px;margin:36px 0 10px}
+  .prose a{color:var(--pink)}
+  .legal a{color:inherit}
 </style>
 </head>
 <body>
@@ -172,7 +183,8 @@
         <text x="86" y="37" text-anchor="middle" font-family="Bebas Neue, Impact, sans-serif" font-size="17" textLength="62" lengthAdjust="spacingAndGlyphs" fill="#fff">UNLOCKED</text>
       </svg>
     </a>
-    <ul><li><a href="/checker.html">Will it work?</a></li><li><a href="/#bundles">Bundles</a></li><li><a href="/travel-unlocked.html">Travel Unlocked</a></li><li><a href="/about.html" aria-current="page" style="color:var(--ink)">About</a></li></ul>
+    <ul id="site-nav"><li><a href="/checker.html">Will it work?</a></li><li><a href="/#bundles">Bundles</a></li><li><a href="/game-unlocked.html">Game Unlocked</a></li><li><a href="/travel-unlocked.html">Travel Unlocked</a></li><li><a href="/about.html" aria-current="page" style="color:var(--ink)">About</a></li></ul>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <a class="btn btn-ink btn-sm" href="#updates">Get updates</a>
   </div>
 </header>
@@ -194,7 +206,7 @@
       </div>
       <div class="prose">
         <p>Buy Unlocked is a brand of LEK Telecom LLC, a mobile devices and services company based in Denver, Colorado. Our team has years of experience in the mobile industry, working with phone makers, carriers, distributors and accessory brands.</p>
-        <p>We source new, open-box and certified pre-owned unlocked phones from established distributors, and we build bundles around them. Each Unlocked bundle pairs a phone with the gear and services to do something new: stay powered all day, game longer, take a break from the screen, or travel without roaming bills.</p>
+        <p>We source new, open-box and certified pre-owned unlocked phones from established distributors, and we build bundles around them. Each Unlocked bundle pairs a phone with the gear and services to do something new: stay powered all day, game longer, or travel without roaming bills.</p>
         <p>We're launching direct to customers at buyunlocked.net and on major U.S. marketplaces, with orders shipped from the United States.</p>
       </div>
     </div>
@@ -208,7 +220,7 @@
       </div>
       <div class="grid3">
         <div class="card"><div class="num">01</div><h3>Unlocked phones</h3><p>New, open-box and certified pre-owned phones from Samsung, Google, Motorola, OnePlus, TCL and Apple, ready for any carrier.</p></div>
-        <div class="card"><div class="num">02</div><h3>Unlocked bundles</h3><p><a href="/#bundles">Game, Unplug, Power, Travel and Wellness Unlocked</a>: a phone plus the accessories and services to use it in a new way.</p></div>
+        <div class="card"><div class="num">02</div><h3>Unlocked bundles</h3><p><a href="/#bundles">Game, Power, Travel and Wellness Unlocked</a>: a phone plus the accessories and services to use it in a new way.</p></div>
         <div class="card"><div class="num">03</div><h3>Partner programs</h3><p>Co-branded bundles, BYOD and activation programs, and direct-to-consumer launches with brands across the mobile ecosystem.</p></div>
       </div>
       <div class="pillars"><span class="pill">Choice</span><span class="pill">Control</span><span class="pill">Confidence</span></div>
@@ -253,6 +265,7 @@
         <input id="signup-email" class="optin-email" type="email" name="CONTACT_EMAIL" placeholder="Your email" autocomplete="email" required>
         <input class="optin-go" type="submit" name="SIGNUP_SUBMIT_BUTTON" value="Notify me">
       </form>
+      <iframe name="_zcSignup" title="Email signup" hidden></iframe>
       <p class="fine">Launch news only. Unsubscribe anytime. You must be 13 or older to sign up.</p>
       <p class="optin-ok" hidden>Almost done. Check your email to confirm.</p>
     </div>
@@ -284,7 +297,7 @@
       </div>
     </div>
     <div class="legal">
-      <span>&copy; 2026 LEK Telecom LLC. Buy Unlocked is a brand of LEK Telecom LLC.</span>
+      <span>&copy; 2026 LEK Telecom LLC. Buy Unlocked is a brand of LEK Telecom LLC. <a href="/privacy.html">Privacy</a></span>
       <span>Brand names belong to their respective owners.</span>
     </div>
   </div>
@@ -292,6 +305,11 @@
 
 <script>
 function zcSubmit(f){var s=f.querySelector('[name=zc_spmSubmit]');if(s)s.remove();var o=f.parentNode.querySelector('.optin-ok');if(o)o.hidden=false;if(window.gtag)gtag('event','generate_lead',{form:f.id||'launch_list'})}
+</script>
+<script>
+(function(){var h=document.querySelector('header'),b=h&&h.querySelector('.menu-btn');if(!b)return;
+b.addEventListener('click',function(){var o=h.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Close':'Menu'});
+h.querySelectorAll('.nav ul a').forEach(function(a){a.addEventListener('click',function(){h.classList.remove('open');b.setAttribute('aria-expanded','false');b.textContent='Menu'})});})();
 </script>
 </body>
 </html>
