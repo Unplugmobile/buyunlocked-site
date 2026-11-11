@@ -149,7 +149,7 @@
   .legal a{color:inherit}
 </style>
 </head>
-<body>
+<body data-bundle="launch_list">
 
 <header>
   <div class="wrap nav">
@@ -328,7 +328,8 @@
 </footer>
 
 <script>
-function zcSubmit(f){var s=f.querySelector('[name=zc_spmSubmit]');if(s)s.remove();var o=f.parentNode.querySelector('.optin-ok');if(o)o.hidden=false;if(window.gtag)gtag('event','generate_lead',{form:f.id||'launch_list'})}
+var BU_REF=(function(){try{var r=new URLSearchParams(location.search).get('ref');if(r){r=r.replace(/[^a-z0-9_-]/gi,'').slice(0,40);sessionStorage.setItem('bu_ref',r);return r}return sessionStorage.getItem('bu_ref')||''}catch(e){return''}})();
+function zcSubmit(f){var s=f.querySelector('[name=zc_spmSubmit]');if(s)s.remove();var o=f.parentNode.querySelector('.optin-ok');if(o)o.hidden=false;var sh=f.parentNode.querySelector('.share');if(sh)sh.hidden=false;if(window.gtag)gtag('event','generate_lead',{bundle:document.body.dataset.bundle||'general',ref:BU_REF||'none',form:f.id||'launch_list'})}
 </script>
 <script>
 (function(){var h=document.querySelector('header'),b=h&&h.querySelector('.menu-btn');if(!b)return;

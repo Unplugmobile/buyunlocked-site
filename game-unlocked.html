@@ -168,9 +168,10 @@
   .prose h2{font-size:24px;margin:36px 0 10px}
   .prose a{color:var(--pink)}
   .legal a{color:inherit}
+  .signup .share p{font-size:16px;margin:28px auto 14px}
 </style>
 </head>
-<body>
+<body data-bundle="game_unlocked">
 
 <header>
   <div class="wrap nav">
@@ -196,7 +197,7 @@
       <h1 class="display"><em>Game</em> Unlocked</h1>
       <p class="lead">The kit for long sessions. A phone cooler to fight the heat, a magnetic ring and finger sleeves for grip and control, a 6 ft right-angle cable that stays out of your hands, and a mystery NFC charm from the Loot Drop series.</p>
       <div class="cta-row">
-        <a class="btn btn-white" href="#updates">Join the waitlist</a>
+        <a class="btn btn-white" href="#updates">Join the founders list</a>
         <a class="btn btn-ghost" href="#charm">How the charm works</a>
       </div>
     </div>
@@ -256,7 +257,7 @@
         <div class="kicker">Questions</div>
         <h2 class="display">Good to know.</h2>
       </div>
-      <details><summary>When can I buy Game Unlocked?</summary><p>Game Unlocked is the first Unlocked bundle we're launching. Join the waitlist below and we'll email you the day it goes live, along with the final price.</p></details>
+      <details><summary>When can I buy Game Unlocked?</summary><p>Game Unlocked is the first Unlocked bundle we're launching. Join the founders list below. The first 250 kits go to the list at a founders price, and we'll email you the day they go live.</p></details>
       <details><summary>Will it work with my phone?</summary><p>The cooler attaches magnetically, so it snaps onto MagSafe iPhones, and the included magnetic ring makes it work with most other phones too. The cable's phone end is USB-C, which fits iPhone 15 and newer and most recent Android phones.</p></details>
       <details><summary>Does the cooler need power?</summary><p>Yes. It runs on USB power, so plan on a charger or power bank nearby for long sessions.</p></details>
       <details><summary>Does tapping the charm open Roblox directly?</summary><p>A tap opens the Game Unlocked hub page, and you tap Launch Roblox from there. That works the same way on every phone. If you want a tap to do something else, you can customize it on iPhone with Shortcuts or rewrite the charm on Android.</p></details>
@@ -285,8 +286,9 @@
 
 <section class="signup" id="updates">
     <div class="wrap">
-      <h2 class="display">Be first in line.</h2>
-      <p>We're opening soon. Join the list and we'll email you the day Game Unlocked goes live.</p>
+      <span class="eyebrow">Founders list</span>
+      <h2 class="display">Get the first kits.</h2>
+      <p>The first 250 Game Unlocked kits go to the founders list at a founders price, before anyone else can buy. Join now and we'll email you the day they go live.</p>
       <form method="POST" class="optin" action="https://zgnp-zngp.maillist-manage.com/weboptin.zc" target="_zcSignup" onsubmit="zcSubmit(this)">
         <input type="hidden" name="submitType" value="optinCustomView">
         <input type="hidden" name="emailReportId" value="">
@@ -308,6 +310,7 @@
       <iframe name="_zcSignup" title="Email signup" hidden></iframe>
       <p class="fine">Launch news only. Unsubscribe anytime. You must be 13 or older to sign up.</p>
       <p class="optin-ok" hidden>Almost done. Check your email to confirm.</p>
+      <div class="share" hidden><p>Know someone who games on their phone? Send them the link before the founders kits are gone.</p><button class="optin-go share-btn" type="button">Share Game Unlocked</button></div>
     </div>
   </section>
 </main>
@@ -345,12 +348,19 @@
 </footer>
 
 <script>
-function zcSubmit(f){var s=f.querySelector('[name=zc_spmSubmit]');if(s)s.remove();var o=f.parentNode.querySelector('.optin-ok');if(o)o.hidden=false;if(window.gtag)gtag('event','generate_lead',{form:f.id||'launch_list'})}
+var BU_REF=(function(){try{var r=new URLSearchParams(location.search).get('ref');if(r){r=r.replace(/[^a-z0-9_-]/gi,'').slice(0,40);sessionStorage.setItem('bu_ref',r);return r}return sessionStorage.getItem('bu_ref')||''}catch(e){return''}})();
+function zcSubmit(f){var s=f.querySelector('[name=zc_spmSubmit]');if(s)s.remove();var o=f.parentNode.querySelector('.optin-ok');if(o)o.hidden=false;var sh=f.parentNode.querySelector('.share');if(sh)sh.hidden=false;if(window.gtag)gtag('event','generate_lead',{bundle:document.body.dataset.bundle||'general',ref:BU_REF||'none',form:f.id||'launch_list'})}
 </script>
 <script>
 (function(){var h=document.querySelector('header'),b=h&&h.querySelector('.menu-btn');if(!b)return;
 b.addEventListener('click',function(){var o=h.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Close':'Menu'});
 h.querySelectorAll('.nav ul a').forEach(function(a){a.addEventListener('click',function(){h.classList.remove('open');b.setAttribute('aria-expanded','false');b.textContent='Menu'})});})();
+</script>
+<script>
+document.querySelectorAll('.share-btn').forEach(function(b){b.addEventListener('click',function(){
+var u='https://buyunlocked.net/game-unlocked.html?ref=share',d={title:'Game Unlocked',text:'Phone cooler kit with a mystery NFC charm. The founders list is open:',url:u};
+if(navigator.share){navigator.share(d).catch(function(){})}else if(navigator.clipboard){navigator.clipboard.writeText(u);b.textContent='Link copied'}
+if(window.gtag)gtag('event','share',{method:navigator.share?'native':'copy',content_type:'bundle',item_id:'game_unlocked'})})});
 </script>
 </body>
 </html>

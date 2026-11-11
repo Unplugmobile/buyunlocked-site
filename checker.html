@@ -81,7 +81,7 @@ footer p{margin:0 0 10px}
 @media (max-width:440px){.others{grid-template-columns:repeat(2,1fr)}.offer .optin{flex-direction:column}}
 </style>
 </head>
-<body>
+<body data-bundle="checker">
 <header>
   <div class="wrap">
     <a class="brand" href="https://buyunlocked.net/">Buy <b>Unlocked</b></a>
@@ -136,7 +136,8 @@ var CARRIERS=[
  {id:'boost',name:'Boost Mobile',core:[[2],[4,66],[5],[12,17]],nr:[5,77],url:'https://www.boostmobile.com/check-compatibility',note:'Boost customers now run on AT&T\'s network. Android phones not bought from Boost need the Boost Config App during setup.'}
 ];
 var OFFER='<div class="offer"><h3>Shopping for an unlocked phone?</h3><p>Join the launch list and we\'ll email you when Buy Unlocked opens.</p><form method="POST" class="optin" action="https://zgnp-zngp.maillist-manage.com/weboptin.zc" target="_zcSignup" onsubmit="zcSubmit(this)"><input type="hidden" name="submitType" value="optinCustomView"><input type="hidden" name="emailReportId" value=""><input type="hidden" name="formType" value="QuickForm"><input type="hidden" name="zx" value="137c2bfc6"><input type="hidden" name="zcvers" value="3.0"><input type="hidden" name="oldListIds" value=""><input type="hidden" name="mode" value="OptinCreateView"><input type="hidden" name="zcld" value="11798f954591de236"><input type="hidden" name="zctd" value="11798f954591daf71"><input type="hidden" name="zc_trackCode" value="ZCFORMVIEW"><input type="hidden" name="zc_formIx" value="3z0cd4b6163fdbf38a358399a0ac9e3421b7c45760f7cd3c182fb80a130d59a2cc"><input type="hidden" name="scriptless" value="yes"><input type="hidden" name="zc_spmSubmit" value="ZCSPMSUBMIT"><label class="sr" for="offer-email">Email address</label><input id="offer-email" class="optin-email" type="email" name="CONTACT_EMAIL" placeholder="Your email" autocomplete="email" required><input class="optin-go" type="submit" name="SIGNUP_SUBMIT_BUTTON" value="Notify me"></form><p class="fine">Launch news only. Unsubscribe anytime. You must be 13 or older to sign up.</p><p class="optin-ok" hidden>Almost done. Check your email to confirm.</p></div>';
-function zcSubmit(f){var s=f.querySelector('[name=zc_spmSubmit]');if(s)s.remove();var o=f.parentNode.querySelector('.optin-ok');if(o)o.hidden=false;if(window.gtag)gtag('event','generate_lead',{form:'checker_offer'})}
+var BU_REF=(function(){try{var r=new URLSearchParams(location.search).get('ref');if(r){r=r.replace(/[^a-z0-9_-]/gi,'').slice(0,40);sessionStorage.setItem('bu_ref',r);return r}return sessionStorage.getItem('bu_ref')||''}catch(e){return''}})();
+function zcSubmit(f){var s=f.querySelector('[name=zc_spmSubmit]');if(s)s.remove();var o=f.parentNode.querySelector('.optin-ok');if(o)o.hidden=false;var sh=f.parentNode.querySelector('.share');if(sh)sh.hidden=false;if(window.gtag)gtag('event','generate_lead',{bundle:document.body.dataset.bundle||'general',ref:BU_REF||'none',form:'checker_offer'})}
 var LABEL={yes:'Should work',limited:'Works with limits',check:'Check before you buy',no:'Not recommended'};
 var SHORT={yes:'Should work',limited:'Limited',check:'Check first',no:'Not advised'};
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
