@@ -148,6 +148,12 @@
   .prose h2{font-size:24px;margin:36px 0 10px}
   .prose a{color:var(--pink)}
   .legal a{color:inherit}
+  .clicker-strip{margin-top:20px;display:grid;grid-template-columns:200px 1fr;gap:28px;align-items:center;background:var(--mist);border-radius:var(--radius);padding:18px;text-decoration:none;color:var(--ink)}
+  .clicker-strip img{width:100%;height:auto;border-radius:14px;display:block}
+  .clicker-strip .badge{background:var(--ink);color:var(--white);margin-bottom:10px;display:inline-block}
+  .clicker-strip h3{font-size:48px;font-weight:400}
+  .clicker-strip p{color:var(--muted);margin-top:6px}
+  @media (max-width:640px){.clicker-strip{grid-template-columns:1fr}}
 </style>
 <script type="application/ld+json">
 {
@@ -205,7 +211,7 @@
     <a class="logo" href="/" aria-label="Buy Unlocked home">
       <img src="/buyunlocked-wordmark.svg" width="88" height="46" alt="">
     </a>
-    <ul id="site-nav"><li><a href="/checker.html">Will it work?</a></li><li><a href="/#bundles">Bundles</a></li><li><a href="/game-unlocked.html">Game Unlocked</a></li><li><a href="/travel-unlocked.html">Travel Unlocked</a></li><li><a href="/about.html">About</a></li></ul>
+    <ul id="site-nav"><li><a href="/checker.html">Will it work?</a></li><li><a href="/#bundles">Bundles</a></li><li><a href="/game-unlocked.html">Game Unlocked</a></li><li><a href="/clickers.html">Clickers</a></li><li><a href="/travel-unlocked.html">Travel Unlocked</a></li><li><a href="/about.html">About</a></li></ul>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     <a class="btn btn-ink btn-sm" href="#updates">Get updates</a>
   </div>
@@ -282,6 +288,10 @@
           <div class="includes">Unlocked phone + wellness wearables</div>
         </article>
       </div>
+      <a class="clicker-strip" href="/clickers.html">
+        <img src="/clickers/clickers-trio.jpg" width="1200" height="1200" alt="GG, AFK and W clicker keychains">
+        <div><span class="badge">Dropping soon</span><h3 class="display">Clicker Keychains</h3><p>A real clicky keyboard switch on your keys, in GG, AFK and W. See them up close &rarr;</p></div>
+      </a>
       <p class="more">More Unlocked bundles are on the way.</p>
     </div>
   </section>
